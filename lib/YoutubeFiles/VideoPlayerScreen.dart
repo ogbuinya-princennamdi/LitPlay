@@ -13,6 +13,8 @@ class LitVideoPlayerScreen extends StatefulWidget {
 class _LitVideoPlayerScreenState extends State<LitVideoPlayerScreen> {
   late YoutubePlayerController _controller;
   bool _isLiked = false;
+  bool _isNotLiked= false;
+  String message= "";
 
   @override
   void initState() {
@@ -25,22 +27,65 @@ class _LitVideoPlayerScreenState extends State<LitVideoPlayerScreen> {
       ),
     );
     _loadLikedState();
+    _loadUnlikedState();
   }
 
   Future<void> _loadLikedState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _isLiked = prefs.getBool(widget.videoId) ?? false; // Use videoId as the key
+      _isLiked = prefs.getBool('${widget.videoId}_liked') ?? false;
+
+      if(_isLiked){
+        message='you have liked this video';
+      }else if(_isNotLiked){
+        message='you have disliked this video';
+      }else{
+        message="you haven't liked or disliked this video";
+      }
+
     });
   }
+Future<void> _loadUnlikedState() async{
+    SharedPreferences prefs = await  SharedPreferences.getInstance();
+    setState(() {
+      _isNotLiked = prefs.getBool('${widget.videoId}_notLiked') ?? false;
 
+      if(_isNotLiked){
+        message='you have disliked this video';
+      }else if(_isLiked){
+        message="you have liked this video";
+      }
+    });
+}
 
   Future<void> _toggleLiked() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _isLiked = !_isLiked; // Toggle the like state
+      _isLiked = !_isLiked;
+      if(_isLiked){
+        message="you have liked this video";
+      }
+      else{
+        message=" you haven't liked or dislike this video";
+      }
     });
-    await prefs.setBool(widget.videoId, _isLiked); // Save the updated state
+    await prefs.setBool(widget.videoId,_isLiked);
+
+
+  }
+  Future<void> _toggleUnLiked() async{
+    SharedPreferences prefs= await SharedPreferences.getInstance();
+    setState(() {
+      _isNotLiked = !_isNotLiked;
+      if(_isNotLiked){
+        message="you have disliked this video";
+      }
+      else{
+        message=" you haven't liked or dislike this video";
+      }
+
+    });
+    await prefs.setBool(widget.videoId, _isNotLiked);
   }
 
   @override
@@ -73,6 +118,11 @@ class _LitVideoPlayerScreenState extends State<LitVideoPlayerScreen> {
                     color: _isLiked ? Colors.blue : Colors.grey,
                   ),
                 ),
+                IconButton(
+                    onPressed:_toggleUnLiked,
+                    icon: Icon(Icons.thumb_down_alt_outlined,
+                    color: _isNotLiked ?Colors.red :Colors.grey),
+                ),
 
               ],
             ),
@@ -80,9 +130,10 @@ class _LitVideoPlayerScreenState extends State<LitVideoPlayerScreen> {
           SizedBox(height: 10),
 
           Text(
-            _isLiked ? "You liked this video!" : "You haven't liked this video yet.",
+            message,
             style: TextStyle(fontSize: 16, color: Colors.red),
           ),
+
         ],
       ),
     );
