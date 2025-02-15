@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "458311775231",
+    "project_id": "litplay-f9442",
+    "storage_bucket": "litplay-f9442.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458311775231:android:fac01fe1561a831afbadca",
+        "android_client_info": {
+          "package_name": "com.litmaclimited.litplay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDaUMYCp4MqUiyTlkMfddUiuKoyBk2BGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

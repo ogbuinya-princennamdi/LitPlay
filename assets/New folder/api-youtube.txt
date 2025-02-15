@@ -1,0 +1,13 @@
+API KEY (key=AIzaSyDyHhxZWlgCcNqyZpB8MQ1aFi85eVPSgsQ ( youtube api)
+OAuth : 838245598389-i06vhfa0ocridsaf4ffkopaba6a6v075.apps.googleusercontent.com (android)
+OAuth: 838245598389-ibivgjcho35jlq1dpljgst2il7eisug7.apps.googleusercontent.com (iOS)
+
+Store: C:\Users\CEO\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: F0:2E:0D:6B:C1:7C:FF:FC:C2:2C:0E:39:06:12:E0:91
+SHA1: 7B:0D:CA:54:DE:24:2A:21:3B:64:98:B1:0A:FA:00:66:AA:02:D0:FC
+SHA-256: 8A:FE:EC:EF:7D:3F:65:50:41:49:CE:A3:5B:54:E4:10:5D:D2:96:FC:03:6D:DD:19:03:73:11:FA:B2:2E:F7:2B
+Valid until: Tuesday, May 26, 2054
+
+
+
